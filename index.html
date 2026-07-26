@@ -30,7 +30,7 @@
             overflow-x: hidden;
         }
 
-        /* ===== Clouds ===== */
+        /* clouds */
         .cloud {
             position: absolute;
             background: white;
@@ -60,7 +60,6 @@
             50% { transform: translateX(30px); }
         }
 
-        /* ===== Nav ===== */
         nav {
             padding: 20px 32px;
             display: flex;
@@ -91,10 +90,10 @@
         .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #f3c9d3; }
         .nav-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #f3c9d3; }
 
-        /* ===== Hero ===== */
+        /* hero */
         .hero {
             position: relative;
-            padding: 70px 24px 90px;
+            padding: 70px 24px 100px;
             text-align: center;
             overflow: hidden;
         }
@@ -141,48 +140,12 @@
             z-index: 5;
         }
 
-        /* ===== Marquee (running text) ===== */
-        .marquee {
-            background: var(--coral);
-            color: white;
-            padding: 14px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-        }
-        .marquee-track {
-            display: inline-block;
-            animation: scroll-left 22s linear infinite;
-        }
-        .marquee-track span {
-            font-family: 'DM Serif Display', serif;
-            font-style: italic;
-            font-size: 1.3rem;
-            padding: 0 24px;
-        }
-        .marquee-track span::after {
-            content: '✿';
-            padding-left: 24px;
-            font-style: normal;
-            opacity: 0.7;
-        }
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .marquee.alt { background: var(--pink); color: var(--pink-deep); }
-        .marquee.alt .marquee-track { animation: scroll-right 26s linear infinite; }
-        @keyframes scroll-right {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
-        }
-
-        /* ===== Section: Untuk Kamu ===== */
+        /* section you */
         .section-you {
             background: #fffaf5;
             padding: 80px 24px 90px;
             text-align: center;
+            border-top: 1px solid var(--line);
             border-bottom: 1px solid var(--line);
         }
         .section-you .arch {
@@ -212,7 +175,7 @@
             color: var(--ink-soft);
         }
 
-        /* ===== Section: Surat ===== */
+        /* letter */
         .section-letter {
             padding: 90px 24px;
             max-width: 720px;
@@ -239,6 +202,7 @@
             padding: 46px 38px;
             box-shadow: 0 20px 60px rgba(58, 43, 58, 0.07);
             position: relative;
+            min-height: 400px;
         }
         .letter-card::before {
             content: '';
@@ -251,26 +215,59 @@
             border-radius: 50%;
             box-shadow: 0 8px 20px rgba(253, 243, 220, 0.9);
         }
-        .letter-card p {
+
+        /* Typewriter output */
+        #typed {
             font-size: 1.05rem;
             line-height: 2;
-            margin-bottom: 20px;
+            color: var(--ink);
+            white-space: pre-wrap;
         }
-        .letter-card p em {
+        #typed em, .letter-card em {
             font-family: 'DM Serif Display', serif;
             font-style: italic;
             color: var(--coral-dark);
         }
-        .letter-card p:last-of-type { margin-bottom: 26px; }
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.1em;
+            background: var(--coral);
+            vertical-align: text-bottom;
+            animation: blink 0.9s infinite;
+            margin-left: 2px;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
         .signature {
             font-family: 'Caveat', cursive;
             font-size: 2.2rem;
             color: var(--coral-dark);
             transform: rotate(-2deg);
             display: inline-block;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 1s;
         }
+        .signature.show { opacity: 1; }
 
-        /* ===== Section: Kata-kata ===== */
+        .replay-btn {
+            margin-top: 24px;
+            background: transparent;
+            border: 1.5px solid var(--pink-deep);
+            color: var(--pink-deep);
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: none;
+            font-family: 'Nunito', sans-serif;
+        }
+        .replay-btn.show { display: inline-block; }
+        .replay-btn:hover { background: var(--pink); }
+
+        /* words section */
         .section-words {
             background: #fbf7f2;
             padding: 90px 24px;
@@ -320,7 +317,7 @@
             color: var(--ink-soft);
         }
 
-        /* ===== Closing ===== */
+        /* closing */
         .section-closing {
             background: var(--cream);
             padding: 100px 24px 80px;
@@ -361,7 +358,6 @@
             50% { transform: rotate(-30deg) scale(1.08); }
         }
 
-        /* ===== Footer ===== */
         footer {
             background: var(--cream);
             padding: 40px 24px 50px;
@@ -393,7 +389,6 @@
         @media (max-width: 480px) {
             .letter-card { padding: 32px 24px; }
             .section-you .arch { width: 160px; height: 210px; font-size: 3.5rem; }
-            .marquee-track span { font-size: 1.05rem; }
         }
     </style>
 </head>
@@ -401,100 +396,69 @@
 
     <nav>
         <div class="logo">for <span>Arep</span></div>
-        <button class="nav-btn" onclick="document.getElementById('letter').scrollIntoView()">baca surat ↓</button>
+        <button class="nav-btn" onclick="document.getElementById('letter').scrollIntoView()">read the letter ↓</button>
     </nav>
 
-    <!-- ============ HERO ============ -->
+    <!-- HERO -->
     <section class="hero">
         <div class="cloud c1"></div>
         <div class="cloud c2"></div>
         <div class="cloud c3"></div>
 
-        <div class="hero-tag">✿ a little sorry ✿</div>
-        <h1>Sorry, <br><em>Arep</em> <span class="script">ya</span></h1>
-        <p class="subtitle">Ada beberapa hal yang belum sempat aku bilang. I hope you'd read this till the end — walaupun cuma sekali.</p>
+        <div class="hero-tag">✿ a little note ✿</div>
+        <h1>I'm sorry, <br><em>Arep</em> <span class="script">ya</span></h1>
+        <p class="subtitle">There's something I've been meaning to say for a while. Hope you'd stay till the end, walaupun cuma sekali baca ni.</p>
     </section>
 
-    <!-- MARQUEE 1 -->
-    <div class="marquee">
-        <div class="marquee-track">
-            <span>i'm sorry</span><span>maaf ya</span><span>i was wrong</span><span>terima kasih</span><span>you deserve better</span><span>i'm sorry</span><span>maaf ya</span><span>i was wrong</span><span>terima kasih</span><span>you deserve better</span>
-        </div>
-    </div>
-
-    <!-- ============ SECTION: UNTUK KAMU ============ -->
+    <!-- SECTION YOU -->
     <div class="section-you">
         <div class="arch">💌</div>
-        <h2>This one's for you, Arep.</h2>
-        <p>Bukan untuk minta apa-apa balik. Bukan untuk mengulang yang sudah lewat. Just because kamu berhak dengar hal-hal yang seharusnya sudah lama aku sampaikan.</p>
+        <h2>This one is for you.</h2>
+        <p>Bukan buat minta apa-apa balik. Bukan juga buat ulang cerita lama. Just because you deserve to hear what I never had the courage to say.</p>
     </div>
 
-    <!-- ============ SECTION: SURAT ============ -->
+    <!-- LETTER with typewriter -->
     <section class="section-letter" id="letter">
         <div class="letter-tag">✎ a letter for you</div>
-        <h2 class="letter-title">Yang selalu <em>aku ingat</em>.</h2>
+        <h2 class="letter-title">Something I <em>should've said</em>.</h2>
         <div class="letter-card">
-            <p>Hai Arep. Aku tahu mungkin ini agak aneh — bikin satu website cuma untuk bilang maaf. Tapi entah kenapa, rasanya nggak cukup kalau cuma lewat chat yang bisa hilang ketutup notifikasi lain. <em>I wanted this to stay somewhere.</em></p>
-
-            <p>Aku minta maaf. Bukan maaf yang basa-basi, tapi maaf yang benar-benar aku pikirin berkali-kali sebelum akhirnya berani aku tulis. Aku sadar aku pernah bikin kamu kecewa, pernah bikin kamu ngerasa nggak dihargai, dan pernah bikin kamu capek sendirian. <em>And for that, I'm truly sorry.</em></p>
-
-            <p>Yang paling aku sesali bukan cuma apa yang aku lakuin — tapi juga apa yang <em>nggak</em> aku lakuin. Kata-kata yang seharusnya aku ucapkan tapi aku diamkan. Waktu yang seharusnya aku luangkan tapi aku sia-siakan. Perhatian kecil yang kamu tunggu tapi nggak pernah datang.</p>
-
-            <p>Aku nggak nulis ini buat minta kamu balik. <em>I know it's too late for that</em>, dan aku hormatin keputusan kamu. Aku cuma pengen kamu tahu bahwa semua yang kita lalui itu berarti buat aku — dan bahwa aku beneran belajar banyak dari kamu.</p>
-
-            <p>Terima kasih sudah pernah sabar. Terima kasih sudah pernah percaya. Terima kasih sudah pernah ada, walaupun akhirnya nggak sampai selamanya. <em>Thank you for everything, Arep.</em></p>
-
-            <p>Semoga kamu selalu sehat, selalu bahagia, dan ketemu seseorang yang bisa kasih kamu semua yang dulu nggak sempat aku kasih. <em>You really deserve the best.</em></p>
-
-            <div class="signature">— Njaa</div>
+            <div id="typed"></div><span class="cursor" id="cursor"></span>
+            <div class="signature" id="sig">— Njaa</div>
+            <br>
+            <button class="replay-btn" id="replay" onclick="startTyping()">↻ play again</button>
         </div>
     </section>
 
-    <!-- MARQUEE 2 -->
-    <div class="marquee alt">
-        <div class="marquee-track">
-            <span>take care</span><span>jaga diri baik-baik</span><span>be happy always</span><span>semoga bahagia</span><span>no hard feelings</span><span>take care</span><span>jaga diri baik-baik</span><span>be happy always</span><span>semoga bahagia</span><span>no hard feelings</span>
-        </div>
-    </div>
-
-    <!-- ============ SECTION: KATA-KATA ============ -->
+    <!-- WORDS -->
     <div class="section-words">
-        <h2>Tiga hal yang <em>ingin aku bilang</em></h2>
-        <div class="sub">kalau saja aku punya kesempatan sekali lagi ✿</div>
+        <h2>Three things I <em>want you to know</em></h2>
+        <div class="sub">kalau ada satu peluang lagi ✿</div>
         <div class="word-grid">
             <div class="word-card">
                 <span class="emo">🌷</span>
-                <h3>Terima kasih</h3>
-                <p>Untuk semua kesabaran yang kamu kasih waktu aku nggak pantas dapetin itu. <em>You were kinder than I deserved.</em></p>
+                <h3>Thank you</h3>
+                <p>For being patient with me even when I gave you nothing to be patient about. You were kinder than I deserved.</p>
             </div>
             <div class="word-card">
                 <span class="emo">🕊️</span>
-                <h3>Maaf ya</h3>
-                <p>Untuk kata-kata yang salah, untuk diam yang terlalu lama, dan untuk semua hal yang bikin kamu ngerasa sendirian.</p>
+                <h3>I'm sorry</h3>
+                <p>For the words I said wrong, the silence yang terlalu panjang, and for making you feel alone when you shouldn't have.</p>
             </div>
             <div class="word-card">
                 <span class="emo">✨</span>
                 <h3>Be happy</h3>
-                <p>Semoga apapun jalan yang kamu ambil sekarang, kamu ketemu ketenangan. <em>You deserve every good thing.</em></p>
+                <p>Wherever life takes you next, semoga kamu ketemu ketenangan. You deserve every good thing coming your way.</p>
             </div>
         </div>
     </div>
 
-    <!-- ============ CLOSING ============ -->
+    <!-- CLOSING -->
     <div class="section-closing">
         <div class="quote-mark">"</div>
-        <h2>Kalau memang kita nggak ditakdirkan bersama, setidaknya aku ingin kamu ingat aku sebagai orang yang pernah tulus — walaupun nggak sempurna.</h2>
+        <h2>If we weren't meant to be, at least remember me as someone who tried, walaupun cara ku tak selalu betul.</h2>
         <div class="heart-blob">🤍</div>
     </div>
 
-    <!-- MARQUEE 3 -->
-    <div class="marquee">
-        <div class="marquee-track">
-            <span>njaa &amp; arep</span><span>thank you for everything</span><span>terima kasih untuk semuanya</span><span>njaa &amp; arep</span><span>thank you for everything</span><span>terima kasih untuk semuanya</span>
-        </div>
-    </div>
-
-    <!-- ============ FOOTER ============ -->
     <footer>
         <div class="footer-buttons">
             <span>with love</span>
@@ -503,6 +467,88 @@
         </div>
         <div class="made">dibuat dengan tulus ✿ Njaa</div>
     </footer>
+
+    <script>
+        const letter = [
+            "Hai Arep.\n\n",
+            "Aku tak tahu macam mana nak mulakan ni. Rasa awkward jugak buat website cuma untuk cakap sorry, tapi rasanya kalau lewat chat je, ",
+            "<em>it feels too easy to ignore</em>",
+            ". So here we are.\n\n",
+            "I'm sorry. Bukan sorry basa-basi. Sorry yang aku dah fikir berkali-kali sebelum berani tulis ni.\n\n",
+            "Aku tahu aku pernah buat kamu kecewa. Aku pernah bikin kamu rasa tak dihargai, dan aku pernah tinggalin kamu sendirian waktu kamu paling butuh someone. ",
+            "<em>I know I wasn't the person you needed me to be</em>",
+            ", dan for that, I'm truly sorry.\n\n",
+            "Yang paling aku sesalin bukan cuma apa yang aku buat. Tapi juga apa yang tak aku buat. Words I should've said. Time I should've spent. Small things you were waiting for tapi tak pernah aku bagi.\n\n",
+            "Aku tak tulis ni untuk minta kamu balik. ",
+            "<em>I know it's too late</em>",
+            ", and I respect that. Aku cuma pengen kamu tahu everything we had was real to me, dan aku belajar banyak dari kamu, more than you'd ever know.\n\n",
+            "Thank you for being patient. Thank you for believing in me. Thank you sebab pernah ada, walaupun akhirnya tak sampai selamanya.\n\n",
+            "Semoga kamu sehat selalu, always happy, dan ketemu seseorang yang bagi kamu semua benda yang aku tak sempat bagi. ",
+            "<em>You really deserve the best, Arep</em>",
+            "."
+        ];
+
+        let fullHTML = letter.join('');
+        // Split into tokens: either an em tag block or single character
+        const tokens = [];
+        let i = 0;
+        while (i < fullHTML.length) {
+            if (fullHTML.substr(i, 4) === '<em>') {
+                const end = fullHTML.indexOf('</em>', i);
+                tokens.push(fullHTML.substring(i, end + 5));
+                i = end + 5;
+            } else {
+                tokens.push(fullHTML[i]);
+                i++;
+            }
+        }
+
+        const typedEl = document.getElementById('typed');
+        const cursorEl = document.getElementById('cursor');
+        const sigEl = document.getElementById('sig');
+        const replayBtn = document.getElementById('replay');
+        let typingActive = false;
+
+        function startTyping() {
+            if (typingActive) return;
+            typingActive = true;
+            typedEl.innerHTML = '';
+            sigEl.classList.remove('show');
+            replayBtn.classList.remove('show');
+            cursorEl.style.display = 'inline-block';
+
+            let idx = 0;
+            function step() {
+                if (idx >= tokens.length) {
+                    typingActive = false;
+                    cursorEl.style.display = 'none';
+                    setTimeout(() => sigEl.classList.add('show'), 400);
+                    setTimeout(() => replayBtn.classList.add('show'), 1200);
+                    return;
+                }
+                const t = tokens[idx];
+                typedEl.innerHTML += t;
+                idx++;
+                let delay = 28;
+                if (t === '.' || t === '?' || t === '!') delay = 300;
+                else if (t === ',') delay = 120;
+                else if (t === '\n') delay = 200;
+                else if (t.length > 1) delay = 400; // em block appears as chunk
+                setTimeout(step, delay);
+            }
+            step();
+        }
+
+        // Trigger typing when user scrolls to the letter
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting && !typingActive && typedEl.innerHTML === '') {
+                    startTyping();
+                }
+            });
+        }, { threshold: 0.3 });
+        observer.observe(document.getElementById('letter'));
+    </script>
 
 </body>
 </html>
