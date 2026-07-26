@@ -3,24 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maaf, [NAMA]</title>
+    <title>Sorry, Arep 🤍</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --cream: #fdf5ec;
-            --sky: #a8d5e2;
-            --sky-light: #d4ecf3;
             --coral: #ff8f7a;
             --coral-dark: #e07060;
-            --pink: #f7bfc7;
+            --pink: #fde4e9;
             --pink-deep: #d9556d;
-            --mint: #b8dfc9;
-            --sun: #f7d774;
-            --lavender: #cfc4e5;
+            --sun: #fdf3dc;
             --ink: #3a2b3a;
             --ink-soft: #7a6a75;
+            --line: #f5e6da;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,13 +30,13 @@
             overflow-x: hidden;
         }
 
-        /* ===== Floating clouds ===== */
+        /* ===== Clouds ===== */
         .cloud {
             position: absolute;
             background: white;
             border-radius: 100px;
-            opacity: 0.85;
-            filter: drop-shadow(0 6px 20px rgba(58, 43, 58, 0.06));
+            opacity: 0.9;
+            filter: drop-shadow(0 6px 20px rgba(58, 43, 58, 0.05));
             pointer-events: none;
             z-index: 1;
         }
@@ -49,18 +46,15 @@
             background: white;
             border-radius: 50%;
         }
-        .cloud.c1 { width: 120px; height: 40px; top: 15%; left: 8%; animation: drift 20s ease-in-out infinite; }
+        .cloud.c1 { width: 120px; height: 40px; top: 18%; left: 6%; animation: drift 20s ease-in-out infinite; }
         .cloud.c1::before { width: 60px; height: 60px; top: -25px; left: 15px; }
         .cloud.c1::after { width: 45px; height: 45px; top: -18px; left: 60px; }
-
-        .cloud.c2 { width: 90px; height: 32px; top: 40%; right: 10%; animation: drift 25s ease-in-out infinite reverse; }
+        .cloud.c2 { width: 90px; height: 32px; top: 45%; right: 8%; animation: drift 25s ease-in-out infinite reverse; }
         .cloud.c2::before { width: 45px; height: 45px; top: -20px; left: 10px; }
         .cloud.c2::after { width: 35px; height: 35px; top: -14px; left: 45px; }
-
-        .cloud.c3 { width: 100px; height: 35px; top: 70%; left: 5%; animation: drift 18s ease-in-out infinite; }
+        .cloud.c3 { width: 100px; height: 35px; top: 72%; left: 4%; animation: drift 18s ease-in-out infinite; }
         .cloud.c3::before { width: 50px; height: 50px; top: -22px; left: 12px; }
         .cloud.c3::after { width: 40px; height: 40px; top: -16px; left: 50px; }
-
         @keyframes drift {
             0%, 100% { transform: translateX(0); }
             50% { transform: translateX(30px); }
@@ -79,11 +73,10 @@
             font-family: 'DM Serif Display', serif;
             font-style: italic;
             font-size: 1.6rem;
-            color: var(--ink);
         }
         .logo span { color: var(--coral); }
         .nav-btn {
-            background: #fde4e9;
+            background: var(--pink);
             color: var(--ink);
             border: none;
             padding: 10px 22px;
@@ -101,7 +94,7 @@
         /* ===== Hero ===== */
         .hero {
             position: relative;
-            padding: 60px 24px 120px;
+            padding: 70px 24px 90px;
             text-align: center;
             overflow: hidden;
         }
@@ -121,108 +114,130 @@
             font-family: 'DM Serif Display', serif;
             font-weight: 400;
             font-size: clamp(3rem, 9vw, 6rem);
-            line-height: 1;
-            color: var(--ink);
+            line-height: 1.05;
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 5;
         }
-        .hero h1 em {
-            color: var(--coral);
-            font-style: italic;
-        }
+        .hero h1 em { color: var(--coral); font-style: italic; }
         .hero h1 .script {
             font-family: 'Caveat', cursive;
             color: var(--pink-deep);
-            font-weight: 600;
+            font-weight: 700;
             font-style: normal;
             display: inline-block;
             transform: rotate(-4deg);
         }
         .hero .subtitle {
-            margin-top: 28px;
+            margin-top: 26px;
             font-size: 1.05rem;
             color: var(--ink-soft);
-            max-width: 480px;
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
+            position: relative;
+            z-index: 5;
         }
 
-        /* ===== Scallop divider ===== */
-        .scallop {
-            display: block;
-            width: 100%;
-            height: 30px;
+        /* ===== Marquee (running text) ===== */
+        .marquee {
+            background: var(--coral);
+            color: white;
+            padding: 14px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        .marquee-track {
+            display: inline-block;
+            animation: scroll-left 22s linear infinite;
+        }
+        .marquee-track span {
+            font-family: 'DM Serif Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            padding: 0 24px;
+        }
+        .marquee-track span::after {
+            content: '✿';
+            padding-left: 24px;
+            font-style: normal;
+            opacity: 0.7;
+        }
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee.alt { background: var(--pink); color: var(--pink-deep); }
+        .marquee.alt .marquee-track { animation: scroll-right 26s linear infinite; }
+        @keyframes scroll-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
         }
 
         /* ===== Section: Untuk Kamu ===== */
         .section-you {
             background: #fffaf5;
-            color: var(--ink);
-            padding: 80px 24px 100px;
-            position: relative;
+            padding: 80px 24px 90px;
             text-align: center;
-            border-top: 1px solid #f5e6da;
-            border-bottom: 1px solid #f5e6da;
+            border-bottom: 1px solid var(--line);
         }
         .section-you .arch {
-            width: 240px;
-            height: 300px;
+            width: 200px;
+            height: 260px;
             background: linear-gradient(160deg, #fde4e9, #fdf0e4);
-            border-radius: 200px 200px 20px 20px;
+            border-radius: 180px 180px 20px 20px;
             margin: 0 auto 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
+            font-size: 4.5rem;
             box-shadow: 0 12px 40px rgba(58, 43, 58, 0.07);
         }
         .section-you h2 {
             font-family: 'DM Serif Display', serif;
             font-style: italic;
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
             font-weight: 400;
             margin-bottom: 14px;
-            color: var(--ink);
         }
         .section-you p {
             font-size: 1.05rem;
-            max-width: 500px;
+            max-width: 520px;
             margin: 0 auto;
-            line-height: 1.7;
+            line-height: 1.8;
             color: var(--ink-soft);
         }
 
-        /* ===== Section: Pesan (kartu utama) ===== */
+        /* ===== Section: Surat ===== */
         .section-letter {
-            padding: 100px 24px;
+            padding: 90px 24px;
             max-width: 720px;
             margin: 0 auto;
-            position: relative;
         }
         .letter-tag {
             font-family: 'Caveat', cursive;
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             color: var(--pink-deep);
             transform: rotate(-3deg);
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .letter-title {
             font-family: 'DM Serif Display', serif;
             font-size: clamp(2rem, 5vw, 2.8rem);
             font-weight: 400;
             margin-bottom: 30px;
-            color: var(--ink);
         }
-        .letter-title em {
-            font-style: italic;
-            color: var(--coral);
-        }
+        .letter-title em { font-style: italic; color: var(--coral); }
         .letter-card {
             background: white;
             border-radius: 32px;
-            padding: 44px 36px;
-            box-shadow: 0 20px 60px rgba(58, 43, 58, 0.08);
+            padding: 46px 38px;
+            box-shadow: 0 20px 60px rgba(58, 43, 58, 0.07);
             position: relative;
         }
         .letter-card::before {
@@ -230,85 +245,88 @@
             position: absolute;
             top: -14px;
             right: 30px;
-            width: 60px;
-            height: 60px;
+            width: 58px;
+            height: 58px;
             background: var(--sun);
             border-radius: 50%;
-            box-shadow: 0 8px 20px rgba(247, 215, 116, 0.4);
+            box-shadow: 0 8px 20px rgba(253, 243, 220, 0.9);
         }
         .letter-card p {
             font-size: 1.05rem;
-            line-height: 1.9;
-            margin-bottom: 18px;
-            color: var(--ink);
+            line-height: 2;
+            margin-bottom: 20px;
         }
-        .letter-card p:last-of-type { margin-bottom: 24px; }
+        .letter-card p em {
+            font-family: 'DM Serif Display', serif;
+            font-style: italic;
+            color: var(--coral-dark);
+        }
+        .letter-card p:last-of-type { margin-bottom: 26px; }
         .signature {
             font-family: 'Caveat', cursive;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--coral-dark);
             transform: rotate(-2deg);
             display: inline-block;
         }
 
-        /* ===== Section: Kenangan ===== */
-        .section-memory {
+        /* ===== Section: Kata-kata ===== */
+        .section-words {
             background: #fbf7f2;
-            padding: 100px 24px;
+            padding: 90px 24px;
             text-align: center;
-            position: relative;
-            border-top: 1px solid #f5e6da;
-            border-bottom: 1px solid #f5e6da;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
         }
-        .section-memory h2 {
+        .section-words h2 {
             font-family: 'DM Serif Display', serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            margin-bottom: 12px;
-            color: var(--ink);
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            margin-bottom: 10px;
         }
-        .section-memory h2 em {
-            font-style: italic;
-            color: var(--pink-deep);
-        }
-        .section-memory .subtitle {
-            color: var(--ink-soft);
-            margin-bottom: 40px;
+        .section-words h2 em { font-style: italic; color: var(--pink-deep); }
+        .section-words .sub {
             font-family: 'Caveat', cursive;
             font-size: 1.4rem;
+            color: var(--ink-soft);
+            margin-bottom: 44px;
         }
-        .memory-grid {
+        .word-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
-            max-width: 800px;
+            max-width: 820px;
             margin: 0 auto;
         }
-        .memory {
-            aspect-ratio: 3/4;
+        .word-card {
             background: white;
-            border-radius: 140px 140px 20px 20px;
-            overflow: hidden;
-            box-shadow: 0 12px 30px rgba(58, 43, 58, 0.1);
+            border-radius: 24px;
+            padding: 30px 26px;
+            box-shadow: 0 10px 30px rgba(58, 43, 58, 0.05);
             transition: transform 0.3s;
+            text-align: left;
         }
-        .memory:hover { transform: translateY(-6px) rotate(-2deg); }
-        .memory:nth-child(2) { border-radius: 20px 20px 140px 140px; }
-        .memory:nth-child(2):hover { transform: translateY(-6px) rotate(2deg); }
-        .memory img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .word-card:hover { transform: translateY(-6px); }
+        .word-card .emo { font-size: 2rem; margin-bottom: 12px; display: block; }
+        .word-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--coral-dark);
+        }
+        .word-card p {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: var(--ink-soft);
         }
 
-        /* ===== Section: Kutipan Penutup ===== */
+        /* ===== Closing ===== */
         .section-closing {
             background: var(--cream);
             padding: 100px 24px 80px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-        .section-closing .quote-mark {
+        .quote-mark {
             font-family: 'DM Serif Display', serif;
             font-size: 8rem;
             line-height: 0.5;
@@ -318,15 +336,13 @@
         .section-closing h2 {
             font-family: 'DM Serif Display', serif;
             font-style: italic;
-            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-size: clamp(1.5rem, 4vw, 2.3rem);
             font-weight: 400;
-            max-width: 640px;
-            margin: 20px auto 30px;
-            line-height: 1.5;
-            color: var(--ink);
+            max-width: 660px;
+            margin: 24px auto 30px;
+            line-height: 1.55;
         }
         .heart-blob {
-            display: inline-block;
             width: 70px;
             height: 70px;
             background: var(--coral);
@@ -336,8 +352,8 @@
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            margin: 20px auto 0;
-            box-shadow: 0 10px 30px rgba(255, 143, 122, 0.4);
+            margin: 24px auto 0;
+            box-shadow: 0 10px 30px rgba(255, 143, 122, 0.35);
             animation: pulse 2.5s ease-in-out infinite;
         }
         @keyframes pulse {
@@ -348,43 +364,43 @@
         /* ===== Footer ===== */
         footer {
             background: var(--cream);
-            padding: 50px 24px 40px;
+            padding: 40px 24px 50px;
             text-align: center;
+            border-top: 1px solid var(--line);
         }
         .footer-buttons {
             display: flex;
             gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         .footer-buttons span {
             padding: 10px 20px;
             border-radius: 100px;
             font-weight: 700;
             font-size: 0.85rem;
-            color: var(--ink);
         }
-        .footer-buttons span:nth-child(1) { background: #fde4e9; }
-        .footer-buttons span:nth-child(2) { background: #fdf3dc; }
+        .footer-buttons span:nth-child(1) { background: var(--pink); }
+        .footer-buttons span:nth-child(2) { background: var(--sun); }
         .footer-buttons span:nth-child(3) { background: #e6f2f6; }
         footer .made {
             font-family: 'Caveat', cursive;
             color: var(--ink-soft);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
         }
 
         @media (max-width: 480px) {
             .letter-card { padding: 32px 24px; }
-            .section-you .arch { width: 180px; height: 240px; }
+            .section-you .arch { width: 160px; height: 210px; font-size: 3.5rem; }
+            .marquee-track span { font-size: 1.05rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Nav -->
     <nav>
-        <div class="logo">for <em>you</em></div>
+        <div class="logo">for <span>Arep</span></div>
         <button class="nav-btn" onclick="document.getElementById('letter').scrollIntoView()">baca surat ↓</button>
     </nav>
 
@@ -394,56 +410,98 @@
         <div class="cloud c2"></div>
         <div class="cloud c3"></div>
 
-        <div class="hero-tag">✿ sebuah permintaan maaf ✿</div>
-        <h1>Maaf, <br><em>[NAMA]</em> <span class="script">sayang</span></h1>
-        <p class="subtitle">Ada beberapa hal yang belum sempat ku katakan. Semoga kamu mau mendengarkannya kali ini.</p>
+        <div class="hero-tag">✿ a little sorry ✿</div>
+        <h1>Sorry, <br><em>Arep</em> <span class="script">ya</span></h1>
+        <p class="subtitle">Ada beberapa hal yang belum sempat aku bilang. I hope you'd read this till the end — walaupun cuma sekali.</p>
     </section>
+
+    <!-- MARQUEE 1 -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <span>i'm sorry</span><span>maaf ya</span><span>i was wrong</span><span>terima kasih</span><span>you deserve better</span><span>i'm sorry</span><span>maaf ya</span><span>i was wrong</span><span>terima kasih</span><span>you deserve better</span>
+        </div>
+    </div>
 
     <!-- ============ SECTION: UNTUK KAMU ============ -->
     <div class="section-you">
         <div class="arch">💌</div>
-        <h2>Ini untuk kamu.</h2>
-        <p>Bukan untuk memohon apapun kembali — hanya karena kamu berhak mendengar hal-hal yang harusnya sudah lama kusampaikan.</p>
+        <h2>This one's for you, Arep.</h2>
+        <p>Bukan untuk minta apa-apa balik. Bukan untuk mengulang yang sudah lewat. Just because kamu berhak dengar hal-hal yang seharusnya sudah lama aku sampaikan.</p>
     </div>
 
     <!-- ============ SECTION: SURAT ============ -->
     <section class="section-letter" id="letter">
-        <div class="letter-tag">✎ sebuah surat</div>
-        <h2 class="letter-title">Yang selalu <em>kuingat</em>.</h2>
+        <div class="letter-tag">✎ a letter for you</div>
+        <h2 class="letter-title">Yang selalu <em>aku ingat</em>.</h2>
         <div class="letter-card">
-            <p>[PARAGRAF 1 — Buka dengan pengakuan / rasa bersalah. Contoh: "Aku tahu maaf saja tidak akan mengembalikan apapun, tapi izinkan aku menuliskannya di sini..."]</p>
-            <p>[PARAGRAF 2 — Jelaskan apa yang kamu sesali. Contoh: "Aku sadar aku telah salah karena..."]</p>
-            <p>[PARAGRAF 3 — Harapan / penutup lembut. Contoh: "Aku hanya ingin kamu tahu bahwa..."]</p>
-            <div class="signature">— [NAMA KAMU]</div>
+            <p>Hai Arep. Aku tahu mungkin ini agak aneh — bikin satu website cuma untuk bilang maaf. Tapi entah kenapa, rasanya nggak cukup kalau cuma lewat chat yang bisa hilang ketutup notifikasi lain. <em>I wanted this to stay somewhere.</em></p>
+
+            <p>Aku minta maaf. Bukan maaf yang basa-basi, tapi maaf yang benar-benar aku pikirin berkali-kali sebelum akhirnya berani aku tulis. Aku sadar aku pernah bikin kamu kecewa, pernah bikin kamu ngerasa nggak dihargai, dan pernah bikin kamu capek sendirian. <em>And for that, I'm truly sorry.</em></p>
+
+            <p>Yang paling aku sesali bukan cuma apa yang aku lakuin — tapi juga apa yang <em>nggak</em> aku lakuin. Kata-kata yang seharusnya aku ucapkan tapi aku diamkan. Waktu yang seharusnya aku luangkan tapi aku sia-siakan. Perhatian kecil yang kamu tunggu tapi nggak pernah datang.</p>
+
+            <p>Aku nggak nulis ini buat minta kamu balik. <em>I know it's too late for that</em>, dan aku hormatin keputusan kamu. Aku cuma pengen kamu tahu bahwa semua yang kita lalui itu berarti buat aku — dan bahwa aku beneran belajar banyak dari kamu.</p>
+
+            <p>Terima kasih sudah pernah sabar. Terima kasih sudah pernah percaya. Terima kasih sudah pernah ada, walaupun akhirnya nggak sampai selamanya. <em>Thank you for everything, Arep.</em></p>
+
+            <p>Semoga kamu selalu sehat, selalu bahagia, dan ketemu seseorang yang bisa kasih kamu semua yang dulu nggak sempat aku kasih. <em>You really deserve the best.</em></p>
+
+            <div class="signature">— Njaa</div>
         </div>
     </section>
 
-    <!-- ============ SECTION: KENANGAN ============ -->
-    <div class="section-memory">
-        <h2>Beberapa <em>kenangan</em> manis</h2>
-        <div class="subtitle">yang selalu kusimpan baik-baik ✿</div>
-        <div class="memory-grid">
-            <div class="memory"><img src="https://images.unsplash.com/photo-1519638399535-1b036603ac77?q=80&w=600&auto=format&fit=crop" alt="kenangan 1"></div>
-            <div class="memory"><img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop" alt="kenangan 2"></div>
-            <div class="memory"><img src="https://images.unsplash.com/photo-1502691876148-a84978e59af8?q=80&w=600&auto=format&fit=crop" alt="kenangan 3"></div>
+    <!-- MARQUEE 2 -->
+    <div class="marquee alt">
+        <div class="marquee-track">
+            <span>take care</span><span>jaga diri baik-baik</span><span>be happy always</span><span>semoga bahagia</span><span>no hard feelings</span><span>take care</span><span>jaga diri baik-baik</span><span>be happy always</span><span>semoga bahagia</span><span>no hard feelings</span>
+        </div>
+    </div>
+
+    <!-- ============ SECTION: KATA-KATA ============ -->
+    <div class="section-words">
+        <h2>Tiga hal yang <em>ingin aku bilang</em></h2>
+        <div class="sub">kalau saja aku punya kesempatan sekali lagi ✿</div>
+        <div class="word-grid">
+            <div class="word-card">
+                <span class="emo">🌷</span>
+                <h3>Terima kasih</h3>
+                <p>Untuk semua kesabaran yang kamu kasih waktu aku nggak pantas dapetin itu. <em>You were kinder than I deserved.</em></p>
+            </div>
+            <div class="word-card">
+                <span class="emo">🕊️</span>
+                <h3>Maaf ya</h3>
+                <p>Untuk kata-kata yang salah, untuk diam yang terlalu lama, dan untuk semua hal yang bikin kamu ngerasa sendirian.</p>
+            </div>
+            <div class="word-card">
+                <span class="emo">✨</span>
+                <h3>Be happy</h3>
+                <p>Semoga apapun jalan yang kamu ambil sekarang, kamu ketemu ketenangan. <em>You deserve every good thing.</em></p>
+            </div>
         </div>
     </div>
 
     <!-- ============ CLOSING ============ -->
     <div class="section-closing">
         <div class="quote-mark">"</div>
-        <h2>[KUTIPAN PENUTUP — kalimat terakhir yang paling ingin kamu sampaikan.]</h2>
+        <h2>Kalau memang kita nggak ditakdirkan bersama, setidaknya aku ingin kamu ingat aku sebagai orang yang pernah tulus — walaupun nggak sempurna.</h2>
         <div class="heart-blob">🤍</div>
+    </div>
+
+    <!-- MARQUEE 3 -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <span>njaa &amp; arep</span><span>thank you for everything</span><span>terima kasih untuk semuanya</span><span>njaa &amp; arep</span><span>thank you for everything</span><span>terima kasih untuk semuanya</span>
+        </div>
     </div>
 
     <!-- ============ FOOTER ============ -->
     <footer>
         <div class="footer-buttons">
             <span>with love</span>
-            <span>from me</span>
-            <span>to you</span>
+            <span>from Njaa</span>
+            <span>to Arep</span>
         </div>
-        <div class="made">dibuat dengan tulus ✿ [NAMA KAMU]</div>
+        <div class="made">dibuat dengan tulus ✿ Njaa</div>
     </footer>
 
 </body>
