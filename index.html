@@ -83,7 +83,7 @@
         }
         .logo span { color: var(--coral); }
         .nav-btn {
-            background: var(--mint);
+            background: #fde4e9;
             color: var(--ink);
             border: none;
             padding: 10px 22px;
@@ -93,10 +93,10 @@
             font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: 0 4px 0 #92c4a9;
+            box-shadow: 0 4px 0 #f3c9d3;
         }
-        .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #92c4a9; }
-        .nav-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #92c4a9; }
+        .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #f3c9d3; }
+        .nav-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #f3c9d3; }
 
         /* ===== Hero ===== */
         .hero {
@@ -156,23 +156,25 @@
 
         /* ===== Section: Untuk Kamu ===== */
         .section-you {
-            background: var(--coral);
-            color: white;
+            background: #fffaf5;
+            color: var(--ink);
             padding: 80px 24px 100px;
             position: relative;
             text-align: center;
+            border-top: 1px solid #f5e6da;
+            border-bottom: 1px solid #f5e6da;
         }
         .section-you .arch {
             width: 240px;
             height: 300px;
-            background: var(--pink);
+            background: linear-gradient(160deg, #fde4e9, #fdf0e4);
             border-radius: 200px 200px 20px 20px;
             margin: 0 auto 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 5rem;
-            box-shadow: 0 12px 40px rgba(58, 43, 58, 0.15);
+            box-shadow: 0 12px 40px rgba(58, 43, 58, 0.07);
         }
         .section-you h2 {
             font-family: 'DM Serif Display', serif;
@@ -180,13 +182,14 @@
             font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 400;
             margin-bottom: 14px;
+            color: var(--ink);
         }
         .section-you p {
             font-size: 1.05rem;
             max-width: 500px;
             margin: 0 auto;
-            opacity: 0.95;
             line-height: 1.7;
+            color: var(--ink-soft);
         }
 
         /* ===== Section: Pesan (kartu utama) ===== */
@@ -250,10 +253,12 @@
 
         /* ===== Section: Kenangan ===== */
         .section-memory {
-            background: var(--sky-light);
+            background: #fbf7f2;
             padding: 100px 24px;
             text-align: center;
             position: relative;
+            border-top: 1px solid #f5e6da;
+            border-bottom: 1px solid #f5e6da;
         }
         .section-memory h2 {
             font-family: 'DM Serif Display', serif;
@@ -297,7 +302,7 @@
 
         /* ===== Section: Kutipan Penutup ===== */
         .section-closing {
-            background: var(--mint);
+            background: var(--cream);
             padding: 100px 24px 80px;
             text-align: center;
             position: relative;
@@ -307,8 +312,8 @@
             font-family: 'DM Serif Display', serif;
             font-size: 8rem;
             line-height: 0.5;
-            color: var(--ink);
-            opacity: 0.15;
+            color: var(--coral);
+            opacity: 0.25;
         }
         .section-closing h2 {
             font-family: 'DM Serif Display', serif;
@@ -360,9 +365,9 @@
             font-size: 0.85rem;
             color: var(--ink);
         }
-        .footer-buttons span:nth-child(1) { background: var(--pink); }
-        .footer-buttons span:nth-child(2) { background: var(--sun); }
-        .footer-buttons span:nth-child(3) { background: var(--sky); }
+        .footer-buttons span:nth-child(1) { background: #fde4e9; }
+        .footer-buttons span:nth-child(2) { background: #fdf3dc; }
+        .footer-buttons span:nth-child(3) { background: #e6f2f6; }
         footer .made {
             font-family: 'Caveat', cursive;
             color: var(--ink-soft);
